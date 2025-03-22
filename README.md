@@ -1,46 +1,79 @@
-# ChatBot-AI-Z
+# ChatBot-AI-Z 🍔
 
-Um chatbot simples que utiliza a API da OpenAI com o modelo GPT-4o-mini para manter conversas como atendente virtual de uma hamburgueria.
+Um chatbot de atendimento para hamburgueria usando a API da OpenAI.
 
-## Configuração
+## Pré-requisitos
 
-1. Clone este repositório
-2. Crie um ambiente virtual Python:
-   ```
-   python -m venv venv
-   ```
-3. Ative o ambiente virtual:
-   - Windows: `venv\Scripts\activate`
-   - Linux/Mac: `source venv/bin/activate`
-4. Instale as dependências:
-   ```
-   pip install openai==0.28.1 python-dotenv
-   ```
-5. Configure sua chave API da OpenAI no arquivo `.env`:
-   ```
-   OPENAI_API_KEY=sua_chave_aqui
-   ```
+- Python 3.8 ou superior
+- Uma conta na OpenAI com chave de API válida
 
-## Uso - Chatbot de Hamburgueria
+## Configuração do Ambiente
 
-Execute o script principal:
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/seu-usuario/ChatBot-AI-Z.git
+cd ChatBot-AI-Z
+```
+
+2. Crie um ambiente virtual (recomendado):
+
+```bash
+python -m venv venv
+
+# No Windows:
+venv\Scripts\activate
+
+# No Linux/Mac:
+source venv/bin/activate
+```
+
+3. Instale as dependências:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Crie um arquivo `.env` na raiz do projeto com sua chave da API da OpenAI:
 
 ```
+OPENAI_API_KEY=sua_chave_api_aqui
+```
+
+## Como Usar
+
+1. Ative o ambiente virtual (caso não esteja ativado):
+
+```bash
+# No Windows:
+venv\Scripts\activate
+
+# No Linux/Mac:
+source venv/bin/activate
+```
+
+2. Execute o chatbot:
+
+```bash
 python chatbot.py
 ```
 
-### Recursos do Chatbot
+3. Interaja com o chatbot:
 
-- Atendente virtual de uma hamburgueria que oferece:
-  - Diversos tipos de hambúrgueres
-  - Snacks e acompanhamentos
-  - Bebidas
-- Pode mostrar o cardápio completo quando solicitado
-- Processa pedidos e formas de pagamento (cartão ou PIX)
-- Gera um resumo estruturado do pedido ao final da interação
+- Digite "cardápio" para ver as opções disponíveis
+- Digite "limpar" para começar uma nova conversa
+- Digite "sair" para encerrar o programa
 
-### Comandos especiais durante a conversa
+## Funcionalidades
 
-- `cardápio`: Exibe o menu completo com produtos e preços
-- `limpar`: Inicia uma nova conversa, mantendo o mesmo contexto
-- `sair`: Encerra o programa
+- Mostra o cardápio quando solicitado
+- Processa pedidos de hambúrgueres e bebidas
+- Calcula o valor total do pedido
+- Aceita pagamentos via cartão (crédito/débito) ou PIX
+- Gera um resumo do pedido ao final da interação
+
+## Observações
+
+- O chatbot está limitado a 3 interações antes de mostrar o resumo do pedido
+- O sistema utiliza o modelo GPT-4 da OpenAI
+- É necessário ter uma chave de API válida da OpenAI para funcionar
