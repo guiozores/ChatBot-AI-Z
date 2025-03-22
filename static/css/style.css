@@ -118,6 +118,7 @@ body {
   border-radius: 18px 18px 18px 0;
   border: 1px solid #e0e0e0;
   max-width: 100%;
+  width: 100%; /* Garantir que ocupe toda a largura disponível */
 }
 
 .message.bot .message-content p {
@@ -392,6 +393,143 @@ body {
   min-width: 20px;
 }
 
+/* Estilos para a mensagem de boas-vindas */
+.welcome-message {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  animation: welcomeAnimation 0.5s ease-out;
+  max-width: 100%;
+  width: 100%; /* Garantir que ocupe toda a largura disponível */
+}
+
+@keyframes welcomeAnimation {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.welcome-header {
+  background-color: var(--primary-color);
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+}
+
+.welcome-logo {
+  font-size: 24px;
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-header h2 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.welcome-body {
+  padding: 15px;
+}
+
+.welcome-body p {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--secondary-color);
+}
+
+.welcome-tip {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  background-color: #fff8e1;
+  padding: 10px;
+  border-radius: 8px;
+  border-left: 4px solid #ffca28;
+}
+
+.tip-icon {
+  font-size: 20px;
+}
+
+.tip-text {
+  font-size: 14px;
+  color: #5d4037;
+}
+
+.welcome-payment {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.payment-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.payment-options {
+  display: flex;
+  gap: 15px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+}
+
+.payment-icon {
+  font-size: 16px;
+}
+
+.welcome-footer {
+  padding: 0 15px 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.menu-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.menu-button:hover {
+  background-color: #e63939;
+  transform: translateY(-2px);
+}
+
+.menu-icon {
+  font-size: 16px;
+}
+
 /* Footer */
 .footer {
   text-align: center;
@@ -411,6 +549,12 @@ body {
 
   .message-content {
     max-width: 85%;
+    width: 100%; /* Garantir que ocupe toda a largura em dispositivos móveis */
+  }
+
+  .message.bot .message-content {
+    max-width: 100%;
+    width: 100%;
   }
 
   .header {

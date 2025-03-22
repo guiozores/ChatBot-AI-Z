@@ -3,7 +3,7 @@ import openai
 import os
 from dotenv import load_dotenv
 from chatbot import obter_resposta, gerar_resumo_pedido, usuario_pediu_cardapio, CARDAPIO, MENSAGEM_BOAS_VINDAS, contexto_chatbot
-from utils.formatters import formatar_cardapio_html, formatar_resumo_html
+from utils.formatters import formatar_cardapio_html, formatar_resumo_html, formatar_boas_vindas_html
 
 # Carregar variáveis de ambiente
 load_dotenv()
@@ -22,7 +22,8 @@ app.config['SECRET_KEY'] = os.getenv("SECRET_KEY", "chave_secreta_padrao")
 # Rota principal - renderiza a página inicial
 @app.route('/')
 def index():
-    return render_template('index.html', mensagem_inicial=MENSAGEM_BOAS_VINDAS)
+    return render_template('index.html', mensagem_inicial_html=formatar_boas_vindas_html(), 
+                          mensagem_inicial=MENSAGEM_BOAS_VINDAS)
 
 # Rota para processar as mensagens do usuário
 @app.route('/enviar_mensagem', methods=['POST'])

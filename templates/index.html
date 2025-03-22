@@ -37,10 +37,8 @@
       <main class="chat-container">
         <div class="chat-messages" id="chat-messages">
           <!-- As mensagens serão adicionadas dinamicamente via JavaScript -->
-          <div class="message bot">
-            <div class="message-content">
-              <p>{{ mensagem_inicial }}</p>
-            </div>
+          <div class="message bot welcome-container">
+            <div class="message-content">{{ mensagem_inicial_html|safe }}</div>
           </div>
         </div>
 

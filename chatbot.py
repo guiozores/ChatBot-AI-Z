@@ -1,5 +1,5 @@
 import os                  # Para acessar variáveis de ambiente
-import openai              # Biblioteca da OpenAI para integração com a API (versão 0.28.1)
+import openai              # Mantendo a importação original
 from dotenv import load_dotenv  # Para carregar variáveis de ambiente do arquivo .env
 
 ###########################################

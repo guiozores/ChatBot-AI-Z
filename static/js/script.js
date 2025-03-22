@@ -190,10 +190,34 @@ document.addEventListener("DOMContentLoaded", function () {
     resumoContainer.style.display = "none";
     mostrandoResumo = false;
 
-    // Mostrar mensagem inicial
-    mostrarMensagemBot(
-      'Olá! Bem-vindo à Hamburgueria Z! Estou aqui para ajudar com seu pedido. Digite "cardápio" se quiser ver as nossas opções. Aceitamos apenas pagamento via cartão (crédito/débito) ou PIX.'
-    );
+    // Fazer uma requisição para obter a mensagem de boas-vindas formatada
+    fetch("/")
+      .then((response) => response.text())
+      .then((html) => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+        const welcomeMessage = doc.querySelector(
+          ".message.bot .message-content"
+        ).innerHTML;
+
+        // Criar elemento para a mensagem de boas-vindas
+        const botMessage = document.createElement("div");
+        botMessage.className = "message bot welcome-container"; // Adicionamos a classe welcome-container
+        const content = document.createElement("div");
+        content.className = "message-content";
+        content.style.width = "100%"; // Garantir largura total
+        content.innerHTML = welcomeMessage;
+        botMessage.appendChild(content);
+
+        // Adicionar ao chat
+        chatMessages.appendChild(botMessage);
+      })
+      .catch((error) => {
+        console.error("Erro ao carregar mensagem de boas-vindas:", error);
+        mostrarMensagemBot(
+          'Olá! Bem-vindo à Hamburgueria Z! Estou aqui para ajudar com seu pedido. Digite "cardápio" se quiser ver as nossas opções. Aceitamos apenas pagamento via cartão (crédito/débito) ou PIX.'
+        );
+      });
   });
 
   // Focar no campo de entrada ao carregar a página

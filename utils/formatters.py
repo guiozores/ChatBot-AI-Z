@@ -263,3 +263,48 @@ def formatar_resumo_html(resumo_json_str):
         return html
     except (json.JSONDecodeError, TypeError) as e:
         return f"<p class='error'>Erro ao formatar resumo: {str(e)}</p>"
+
+def formatar_boas_vindas_html():
+    """
+    Retorna uma mensagem de boas-vindas formatada em HTML com estilo moderno
+    """
+    return """
+    <div class="welcome-message">
+        <div class="welcome-header">
+            <div class="welcome-logo">🍔</div>
+            <h2>Bem-vindo à Hamburgueria Z!</h2>
+        </div>
+        
+        <div class="welcome-body">
+            <p>Olá! Estou aqui para ajudar com seu pedido.</p>
+            
+            <div class="welcome-tip">
+                <div class="tip-icon">💡</div>
+                <div class="tip-text">
+                    Digite <strong>"cardápio"</strong> para ver nossas opções
+                </div>
+            </div>
+            
+            <div class="welcome-payment">
+                <div class="payment-title">Formas de pagamento</div>
+                <div class="payment-options">
+                    <div class="payment-option">
+                        <span class="payment-icon">💳</span>
+                        <span>Cartão (crédito/débito)</span>
+                    </div>
+                    <div class="payment-option">
+                        <span class="payment-icon">📱</span>
+                        <span>PIX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="welcome-footer">
+            <button class="menu-button" onclick="document.getElementById('user-input').value = 'cardápio'; document.getElementById('message-form').dispatchEvent(new Event('submit'))">
+                <span class="menu-icon">📋</span>
+                <span>Ver Cardápio</span>
+            </button>
+        </div>
+    </div>
+    """

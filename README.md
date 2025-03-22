@@ -99,6 +99,7 @@ Esta branch contém a versão web do chatbot da Hamburgueria Z, implementada com
 ## Instalação
 
 1. Clone o repositório e mude para a branch beta
+
 ```bash
 git clone <URL_DO_SEU_REPOSITORIO>
 cd ChatBot-AI-Z
@@ -106,18 +107,21 @@ git checkout beta
 ```
 
 2. Crie e ative um ambiente virtual
+
 ```bash
 python -m venv venv
 source venv/bin/activate  # No Windows: venv\Scripts\activate
 ```
 
 3. Instale as dependências
+
 ```bash
 pip install -r requirements.txt
 ```
 
 4. Configure as variáveis de ambiente
-Crie um arquivo .env na raiz do projeto com:
+   Crie um arquivo .env na raiz do projeto com:
+
 ```
 OPENAI_API_KEY=sua_chave_da_api_da_openai
 SECRET_KEY=chave_secreta_para_flask
