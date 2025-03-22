@@ -42,8 +42,8 @@ def enviar_mensagem():
             'contador': qtd_perguntas  # Não incrementa o contador
         })
     
-    # Obter resposta da API da OpenAI
-    resposta = obter_resposta(mensagem_usuario, contexto_chatbot(), MODEL)
+    # Obter resposta da API da OpenAI, passando o histórico de conversa
+    resposta = obter_resposta(mensagem_usuario, contexto_chatbot(), MODEL, conversa_anterior)
     
     # Atualizar a conversa
     conversa_anterior.append({

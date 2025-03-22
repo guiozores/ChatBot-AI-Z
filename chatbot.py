@@ -63,7 +63,7 @@ Aceitamos apenas pagamento via cartão (crédito/débito) ou PIX."""
 # BLOCO DE FUNÇÃO DE COMUNICAÇÃO COM A API
 ###########################################
 
-def obter_resposta(pergunta, contexto, modelo):
+def obter_resposta(pergunta, contexto, modelo, historico=None):
     """
     Função que consulta a API da OpenAI para responder perguntas sobre um contexto específico.
     
@@ -71,18 +71,34 @@ def obter_resposta(pergunta, contexto, modelo):
         pergunta (str): A pergunta ou mensagem enviada pelo usuário
         contexto (str): O contexto que define o comportamento do chatbot
         modelo (str): O modelo de IA a ser utilizado
+        historico (list): Lista de mensagens anteriores (opcional)
         
     Retorno:
         str: A resposta gerada pelo modelo de IA
     """
+    # Preparar as mensagens para a API
+    messages = []
+    
+    # Adicionar o contexto como mensagem de sistema apenas na primeira chamada
+    messages.append({"role": "system", "content": contexto})
+    
+    # Adicionar o histórico de mensagens se fornecido
+    if historico:
+        for msg in historico:
+            if 'pergunta' in msg:
+                messages.append({"role": "user", "content": msg['pergunta']})
+            if 'resposta' in msg:
+                messages.append({"role": "assistant", "content": msg['resposta']})
+    
+    # Adicionar a pergunta atual
+    messages.append({"role": "user", "content": pergunta})
+    
+    # Fazer a chamada para a API
     response = openai.ChatCompletion.create(
-        model=modelo,           # Modelo de IA a ser usado (gpt-4o-mini)
-        messages=[
-            {"role": "system", "content": contexto},  # Instrução de sistema que define o papel do chatbot
-            {"role": "user", "content": pergunta}     # Mensagem do usuário
-        ],
+        model=modelo,           # Modelo de IA a ser usado
+        messages=messages,      # Lista de mensagens incluindo contexto, histórico e pergunta atual
         max_tokens=500,         # Limita o tamanho da resposta
-        temperature=0.7         # Controla a aleatoriedade da resposta (0.7 é moderadamente criativo)
+        temperature=0.7         # Controla a aleatoriedade da resposta
     )
     return response['choices'][0]['message']['content']  # Extrai o texto da resposta
 
@@ -252,7 +268,7 @@ def main():
         perguntas.append(pergunta)
         
         # Obtém a resposta do modelo de IA
-        resposta = obter_resposta(pergunta, contexto_chatbot(), MODEL)
+        resposta = obter_resposta(pergunta, contexto_chatbot(), MODEL, historico=[{'pergunta': p, 'resposta': r} for p, r in zip(perguntas, respostas)])
         
         # Armazena a resposta atual
         respostas.append(resposta)
