@@ -172,3 +172,17 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Editor/IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db

@@ -79,3 +79,68 @@ python chatbot.py
 - O chatbot está limitado a 3 interações antes de mostrar o resumo do pedido
 - O sistema utiliza o modelo GPT-4 da OpenAI
 - É necessário ter uma chave de API válida da OpenAI para funcionar
+
+# Chatbot Hamburgueria Z - Versão Web (Branch Beta)
+
+Esta branch contém a versão web do chatbot da Hamburgueria Z, implementada com Flask.
+
+## Diferenças da Branch Main
+
+- Interface web completa com Flask
+- Design responsivo com CSS
+- Mesma lógica de negócios adaptada para ambiente web
+- Facilidade de uso através do navegador
+
+## Requisitos
+
+- Python 3.8+
+- Bibliotecas listadas em requirements.txt
+
+## Instalação
+
+1. Clone o repositório e mude para a branch beta
+```bash
+git clone <URL_DO_SEU_REPOSITORIO>
+cd ChatBot-AI-Z
+git checkout beta
+```
+
+2. Crie e ative um ambiente virtual
+```bash
+python -m venv venv
+source venv/bin/activate  # No Windows: venv\Scripts\activate
+```
+
+3. Instale as dependências
+```bash
+pip install -r requirements.txt
+```
+
+4. Configure as variáveis de ambiente
+Crie um arquivo .env na raiz do projeto com:
+```
+OPENAI_API_KEY=sua_chave_da_api_da_openai
+SECRET_KEY=chave_secreta_para_flask
+```
+
+## Execução
+
+Para iniciar o servidor Flask:
+
+```bash
+python app.py
+```
+
+Acesse a aplicação em http://localhost:5000
+
+## Estrutura do Projeto
+
+- `app.py`: Aplicação Flask principal
+- `chatbot.py`: Módulo com a lógica do chatbot
+- `static/`: Arquivos estáticos (CSS, JavaScript)
+- `templates/`: Templates HTML
+- `utils/`: Módulos utilitários
+
+## Screenshots
+
+[Insira screenshots da aplicação web aqui]

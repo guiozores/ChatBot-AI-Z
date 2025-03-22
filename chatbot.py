@@ -91,7 +91,6 @@ def obter_resposta(pergunta, contexto, modelo):
 ###########################################
 
 def usuario_pediu_cardapio(mensagem):
-    ####################################
     """
     Verifica se o usuário está solicitando o cardápio.
     
@@ -100,13 +99,7 @@ def usuario_pediu_cardapio(mensagem):
         
     Retorno:
         bool: True se o usuário pediu o cardápio, False caso contrário
-        
-    Nota: Quando o usuário solicita o cardápio, essa interação NÃO é enviada para a OpenAI.
-    O sistema exibe o cardápio pré-definido e usa 'continue' para pular o resto do loop,
-    o que significa que a pergunta não é armazenada, a resposta não é armazenada,
-    e nenhuma chamada à API da OpenAI é feita, economizando tokens.
     """
-    ####################################
     # Converter a mensagem para minúsculas para facilitar a comparação
     mensagem = mensagem.lower()
     
@@ -143,7 +136,7 @@ def gerar_resumo_pedido(perguntas, respostas):
     2. O valor total do pedido (some os preços dos itens mencionados)
     3. A forma de pagamento escolhida
     
-    Retorne apenas um JSON com os campos: 'itens' (lista de strings), 'valor_total' (número) e 'forma_pagamento' (string).
+    Retorne apenas um JSON com os campos: 'itens' (lista de objetos com 'nome', 'quantidade' e 'preco'), 'valor_total' (número) e 'forma_pagamento' (string).
     Se alguma informação não estiver disponível, use o valor null."""
     
     # Combinar as conversas em um formato que facilite a extração
@@ -158,20 +151,9 @@ def gerar_resumo_pedido(perguntas, respostas):
     except Exception as e:
         return f"Não foi possível gerar um resumo detalhado do pedido. Erro: {str(e)}"
 
-###########################################
-# BLOCO DA FUNÇÃO PRINCIPAL
-###########################################
-
-def main():
-    """
-    Função principal que controla o fluxo do chatbot da hamburgueria.
-    Gerencia as interações, mostra o cardápio apenas quando solicitado e exibe o resumo do pedido.
-    """
-    # Cabeçalho do programa
-    print("🍔 Bem-vindo ao Chatbot da Hamburgueria Z!")
-    
-    # Define o contexto que o chatbot deve seguir
-    contexto = """Você é um atendente virtual de uma hamburgueria que faz delivery.
+# Função para retornar o contexto do chatbot
+def contexto_chatbot():
+    return """Você é um atendente virtual de uma hamburgueria que faz delivery.
     Você oferece os seguintes itens:
     
     BURGERS:
@@ -210,6 +192,18 @@ def main():
     
     Limite-se APENAS a esse contexto e a essas 3 interações. Não ofereça outros produtos ou serviços.
     Seja educado e cordial, mas direto e objetivo nas respostas."""
+
+###########################################
+# BLOCO DA FUNÇÃO PRINCIPAL
+###########################################
+
+def main():
+    """
+    Função principal que controla o fluxo do chatbot da hamburgueria.
+    Gerencia as interações, mostra o cardápio apenas quando solicitado e exibe o resumo do pedido.
+    """
+    # Cabeçalho do programa
+    print("🍔 Bem-vindo ao Chatbot da Hamburgueria Z!")
     
     # Instruções para o usuário
     print("Digite 'sair' para encerrar ou 'limpar' para iniciar uma nova conversa.")
@@ -258,7 +252,7 @@ def main():
         perguntas.append(pergunta)
         
         # Obtém a resposta do modelo de IA
-        resposta = obter_resposta(pergunta, contexto, MODEL)
+        resposta = obter_resposta(pergunta, contexto_chatbot(), MODEL)
         
         # Armazena a resposta atual
         respostas.append(resposta)

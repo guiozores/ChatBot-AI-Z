@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hamburgueria Z - Chatbot</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header com logo e informações -->
+      <header class="header">
+        <div class="logo">
+          <h1>🍔 Hamburgueria Z</h1>
+        </div>
+        <div class="contador-container">
+          <div class="contador">
+            <span id="pergunta-atual">0</span>/<span id="total-perguntas"
+              >3</span
+            >
+          </div>
+        </div>
+      </header>
+
+      <!-- Área principal do chat -->
+      <main class="chat-container">
+        <div class="chat-messages" id="chat-messages">
+          <!-- As mensagens serão adicionadas dinamicamente via JavaScript -->
+          <div class="message bot">
+            <div class="message-content">
+              <p>{{ mensagem_inicial }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Área para resumo do pedido (inicialmente oculta) -->
+        <div class="resumo-container" id="resumo-container">
+          <h3>📋 Resumo do Pedido</h3>
+          <div id="resumo-conteudo"></div>
+          <div id="historico-conversa"></div>
+        </div>
+
+        <!-- Formulário para envio de mensagens -->
+        <div class="message-form-container">
+          <form id="message-form" class="message-form">
+            <input
+              type="text"
+              id="user-input"
+              placeholder="Digite sua mensagem..."
+              autocomplete="off"
+            />
+            <button type="submit" id="send-button">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+          <button id="restart-button" class="restart-button">
+            <i class="fas fa-redo-alt"></i> Nova Conversa
+          </button>
+        </div>
+      </main>
+
+      <!-- Footer com informações adicionais -->
+      <footer class="footer">
+        <p>Aceita apenas cartão (crédito/débito) ou PIX</p>
+      </footer>
+    </div>
+
+    <!-- Templates para mensagens -->
+    <template id="user-message-template">
+      <div class="message user">
+        <div class="message-content">
+          <p></p>
+        </div>
+      </div>
+    </template>
+
+    <template id="bot-message-template">
+      <div class="message bot">
+        <div class="message-content">
+          <p></p>
+        </div>
+      </div>
+    </template>
+
+    <template id="loading-template">
+      <div class="message bot loading">
+        <div class="spinner">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+      </div>
+    </template>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
