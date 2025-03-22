@@ -64,13 +64,15 @@ python chatbot.py
 - Digite "limpar" para começar uma nova conversa
 - Digite "sair" para encerrar o programa
 
-## Funcionalidades
+### Recursos do Chatbot
 
-- Mostra o cardápio quando solicitado
-- Processa pedidos de hambúrgueres e bebidas
-- Calcula o valor total do pedido
-- Aceita pagamentos via cartão (crédito/débito) ou PIX
-- Gera um resumo do pedido ao final da interação
+- Atendente virtual de uma hamburgueria que oferece:
+  - Diversos tipos de hambúrgueres
+  - Snacks e acompanhamentos
+  - Bebidas
+- Pode mostrar o cardápio completo quando solicitado
+- Processa pedidos e formas de pagamento (cartão ou PIX)
+- Gera um resumo estruturado do pedido ao final da interação
 
 ## Observações
 
