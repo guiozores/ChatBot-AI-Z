@@ -22,15 +22,16 @@ cd ChatBot-AI-Z
 python -m venv venv
 ```
 
-# No Windows:
+## No Windows:
 ```bash
 venv\Scripts\activate
 ```
 
-# No Linux/Mac:
+## No Linux/Mac:
 ```bash
 source venv/bin/activate
 ```
+## Dependências
 
 3. Instale as dependências:
 
@@ -44,18 +45,20 @@ pip install -r requirements.txt
 OPENAI_API_KEY=sua_chave_api_aqui
 ```
 
-## Como Usar
+# Como Usar
 
 1. Ative o ambiente virtual (caso não esteja ativado):
 
+## No Windows:
 ```bash
-# No Windows:
 venv\Scripts\activate
-
-# No Linux/Mac:
-source venv/bin/activate
 ```
 
+## No Linux/Mac:
+```bash
+source venv/bin/activate
+```
+# Execução
 2. Execute o chatbot:
 
 ```bash
