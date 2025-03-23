@@ -20,11 +20,15 @@ cd ChatBot-AI-Z
 
 ```bash
 python -m venv venv
+```
 
 # No Windows:
+```bash
 venv\Scripts\activate
+```
 
 # No Linux/Mac:
+```bash
 source venv/bin/activate
 ```
 
@@ -145,6 +149,12 @@ Acesse a aplicação em http://localhost:5000
 - `templates/`: Templates HTML
 - `utils/`: Módulos utilitários
 
-## Screenshots
+## Atualizações futuras
 
+- Contabilizacão de tokens via debug e extração completa de estatisticas
+- Redução do consumo de tokens ao não enviar o contexto todas as vezes para a OpenAI.
+- Otimização do código
+
+## Screenshots
+![alt text](statistc.jpeg)
 [Insira screenshots da aplicação web aqui]

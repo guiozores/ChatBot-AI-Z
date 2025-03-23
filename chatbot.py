@@ -1,6 +1,6 @@
-import os                  # Para acessar variáveis de ambiente
-import openai              # Mantendo a importação original
-from dotenv import load_dotenv  # Para carregar variáveis de ambiente do arquivo .env
+import os                  
+import openai              
+from dotenv import load_dotenv  
 
 ###########################################
 # BLOCO DE CONFIGURAÇÃO INICIAL
@@ -151,6 +151,7 @@ def gerar_resumo_pedido(perguntas, respostas):
     1. Quais itens foram pedidos e suas quantidades
     2. O valor total do pedido (some os preços dos itens mencionados)
     3. A forma de pagamento escolhida
+    4. A forma de entrega, se vai ser entrega ou retirada. E o nome do cliente.
     
     Retorne apenas um JSON com os campos: 'itens' (lista de objetos com 'nome', 'quantidade' e 'preco'), 'valor_total' (número) e 'forma_pagamento' (string).
     Se alguma informação não estiver disponível, use o valor null."""
@@ -198,11 +199,12 @@ def contexto_chatbot():
     Seu objetivo é:
     1) Receber o pedido do cliente (quais itens e quantidade)
     2) Se o cliente pedir o cardápio ou menu, mostre todas as opções disponíveis
-    3) Confirmar o pedido e informar que foi colocado na fila de preparo
+    3) A forma de entrega, se vai ser entrega ou retirada, solicitar o endereço. E o nome do cliente.
     4) Perguntar a forma de pagamento, informando que aceitamos APENAS cartão (crédito/débito) ou PIX. 
        NÃO aceitamos dinheiro vivo/em espécie.
     5) Caso o cliente demore em decidir, na última mensagem sempre pergunte a forma de pagamento (cartão ou PIX) 
-       caso ele já tenha escolhido algum item.
+       caso ele já tenha escolhido algum item. E tambem confirmar o endereço e forma de entrega, caso ele ainda não tenha escolhido ou solicitado.
+    6)Confirmar o pedido e informar que foi colocado na fila de preparo somente após o cliente confirmar
     
     É importante calcular e informar o valor total do pedido antes de perguntar a forma de pagamento.
     
