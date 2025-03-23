@@ -157,4 +157,3 @@ Acesse a aplicação em http://localhost:5000
 
 ## Screenshots
 ![alt text](statistc.jpeg)
-[Insira screenshots da aplicação web aqui]
