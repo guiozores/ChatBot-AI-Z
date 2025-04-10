@@ -151,3 +151,4 @@ Acesse a aplicação em http://localhost:5000
 - `static/`: Arquivos estáticos (CSS, JavaScript)
 - `templates/`: Templates HTML
 - `utils/`: Módulos utilitários
+- FIM

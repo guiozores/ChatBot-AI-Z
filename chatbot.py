@@ -1,5 +1,5 @@
 import os                  # Pra acessar variáveis de ambiente e funções do sistema
-import openai              # Biblioteca da OpenAI pra falar com a IA
+import openai              # Biblioteca da OpenAI pra falar com a IA utilizando chat completion
 from dotenv import load_dotenv  # Pra carregar as variáveis do arquivo .env
 
 # Carrega as variáveis do arquivo .env (tipo a chave da API)

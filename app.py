@@ -102,7 +102,5 @@ def resumo_pedido():  # Função que processa todo o histórico e gera um resumo
         'historico_html': historico_html  # Histórico formatado em HTML
     })
 
-# Código que roda quando o arquivo é executado diretamente
 if __name__ == '__main__':
-    # Inicia o servidor Flask em modo debug (pra mostrar erros) na porta 5000
-    app.run(debug=True, host='0.0.0.0', port=5000)  # Host 0.0.0.0 permite acessar de qualquer máquina na rede
+    app.run(debug=True, host='0.0.0.0', port=5000)
